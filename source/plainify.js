@@ -3,7 +3,7 @@
 /**
  * Функция получает на вход обычный объект с вложенными свойствами, а вохвращает plain-объект
  * @param {Object} obj - объект с вложенными свойствами
- * @returns {Object} newObj - plain-объект, полученный из obj
+ * @returns {Object} - plain-объект, полученный из obj
  * @example 
  * Получает на вход:
  * const nected = {
@@ -20,7 +20,7 @@
  */
 
 const plainify = obj => {
-    let newObj = new Object();
+    let newObj = {};
     let isNested = false;
     for (let key in obj) {
         if (typeof obj[key] === 'object' && obj[key] != null) {
