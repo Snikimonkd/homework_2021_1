@@ -21,7 +21,7 @@
 
 const plainify = (obj, lastKey) => {
     const ret = {};
-    for (let key in obj) {
+    for (const key in obj) {
         const newKey = lastKey ? lastKey + '.' + key : key;
         if (typeof obj[key] === 'object' && obj[key] !== null) {
             Object.assign(ret, plainify(obj[key], newKey));
