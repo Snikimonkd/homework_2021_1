@@ -21,10 +21,10 @@
 
 const plainify = obj => {
     let ret = {};
-    for (let key in obj) {
+    for (var key in obj) {
         if (typeof obj[key] === 'object' && obj[key] != null) {
             let nextObj = plainify(obj[key]);
-            for (let nextKey in nextObj) {
+            for (var nextKey in nextObj) {
                 ret[key + '.' + nextKey] = nextObj[nextKey];
             }
         } else {
