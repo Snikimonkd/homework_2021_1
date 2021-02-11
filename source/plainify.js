@@ -24,7 +24,6 @@ const plainify = obj => {
     for (const key in obj) {
         if (typeof obj[key] === 'object' && obj[key] !== null) {
             const nextObj = plainify(obj[key]);
-            console.log(Object.keys(nextObj));
             Object.keys(nextObj).forEach(nextKey =>
                 ret[key + '.' + nextKey] = nextObj[nextKey]);
         } else {
