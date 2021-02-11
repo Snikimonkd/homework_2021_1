@@ -20,13 +20,13 @@
  */
 
 const plainify = obj => {
-    let ret = {};
-    for (var key in obj) {
-        if (typeof obj[key] === 'object' && obj[key] != null) {
-            let nextObj = plainify(obj[key]);
-            for (var nextKey in nextObj) {
-                ret[key + '.' + nextKey] = nextObj[nextKey];
-            }
+    const ret = {};
+    for (const key in obj) {
+        if (typeof obj[key] === 'object' && obj[key] !== null) {
+            const nextObj = plainify(obj[key]);
+            console.log(Object.keys(nextObj));
+            Object.keys(nextObj).forEach(nextKey =>
+                ret[key + '.' + nextKey] = nextObj[nextKey]);
         } else {
             ret[key] = obj[key];
         }
