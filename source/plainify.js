@@ -6,7 +6,7 @@
  * @returns {Object} - plain-объект, полученный из obj
  * @example 
  * Получает на вход:
- * const nected = {
+ * const nested = {
  *      deep: {
  *          foo: 'bar',
  *          baz: 42
@@ -27,7 +27,6 @@ const plainify = (obj, lastKey) => {
             Object.assign(ret, plainify(obj[key], newKey));
         } else {
             ret[newKey] = obj[key];
-            console.log(ret);
         }
     }
 
