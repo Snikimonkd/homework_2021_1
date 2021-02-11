@@ -20,24 +20,17 @@
  */
 
 const plainify = obj => {
-    let newObj = {};
-    let isNested = false;
+    let ret = {};
     for (let key in obj) {
         if (typeof obj[key] === 'object' && obj[key] != null) {
-            for (let nextKey in obj[key]) {
-                if (typeof obj[key][nextKey] === 'object' && obj[key][nextKey] != null) {
-                    isNested = true;
-                }
-                newObj[key + '.' + nextKey] = obj[key][nextKey];
+            let nextObj = plainify(obj[key]);
+            for (let nextKey in nextObj) {
+                ret[key + '.' + nextKey] = nextObj[nextKey];
             }
         } else {
-            newObj[key] = obj[key];
+            ret[key] = obj[key];
         }
     }
 
-    if (isNested) {
-        newObj = plainify(newObj);
-    }
-
-    return newObj;
+    return ret;
 }
