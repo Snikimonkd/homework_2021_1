@@ -19,15 +19,15 @@
  * };
  */
 
-const plainify = obj => {
+const plainify = (obj, lastKey) => {
     const ret = {};
-    for (const key in obj) {
+    for (let key in obj) {
+        const newKey = lastKey ? lastKey + '.' + key : key;
         if (typeof obj[key] === 'object' && obj[key] !== null) {
-            const nextObj = plainify(obj[key]);
-            Object.keys(nextObj).forEach(nextKey =>
-                ret[key + '.' + nextKey] = nextObj[nextKey]);
+            Object.assign(ret, plainify(obj[key], newKey));
         } else {
-            ret[key] = obj[key];
+            ret[newKey] = obj[key];
+            console.log(ret);
         }
     }
 
