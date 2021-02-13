@@ -21,7 +21,8 @@
  */
 
 const plainify = (obj, lastKey) => {
-    if (typeof obj !== 'object' || obj == null) {
+    console.log(lastKey);
+    if (typeof obj !== 'object' || obj === null || (lastKey !== 'string' && lastKey === null)) {
         return null;
     }
 
