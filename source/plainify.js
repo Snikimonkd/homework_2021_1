@@ -20,9 +20,12 @@
  * };
  */
 
-const plainify = (obj, lastKey) => {
-    console.log(lastKey);
-    if (typeof obj !== 'object' || obj === null || (lastKey !== 'string' && lastKey === null)) {
+const plainify = (obj, lastKey = null) => {
+    if (typeof obj !== 'object' || obj === null) {
+        return null;
+    }
+    if (typeof lastKey !== 'string' && typeof lastKey !== 'object' && lastKey !== null) {
+        console.log(lastKey);
         return null;
     }
 
