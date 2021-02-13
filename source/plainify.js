@@ -21,6 +21,10 @@
  */
 
 const plainify = (obj, lastKey) => {
+    if (typeof obj !== 'object' || obj == null) {
+        return null;
+    }
+
     const ret = {};
     for (const key in obj) {
         const newKey = lastKey ? lastKey + '.' + key : key;
